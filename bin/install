@@ -11,6 +11,7 @@ mv jre* jre
 unzip versions/fastqc/fastqc*
 mv FastQC fastqc
 chmod +x fastqc/fastqc
-
+#A la hora de ejecutar habrá que indicar el path a java
+#P.e: ./fastqc/fastqc -o output.put -j jre/bin/java input.fq
 client_result "install complete....`date`"
 #echo "hola" > /dev/null
