@@ -1,16 +1,16 @@
 #!/bin/bash
 
-version=cutadapt
+version=fastqc
 
 function status() {
 
   	client_result $pwd
-    ps -C cutadapt > /dev/null
+    ps -C java > /dev/null
     if [ "$?" -eq "0" ];
     then
-    client_result "cutadapt is running";
+    client_result "fastqc is running";
     else
-    client_result "cutadapt is not running";
+    client_result "fastqc is not running";
     fi
 
 
@@ -18,13 +18,13 @@ function status() {
 
 function start() {
 
-     client_result "starting cutadapt...."
-        ps -C cutadapt > /dev/null
+     client_result "starting fastqc...."
+        ps -C java > /dev/null
         if [ "$?" -eq "0" ]; then
-                client_result "cutadapt is running already...run stop first";
+                client_result "fastqc is running already...run stop first";
         else
 #			getinternalip
-			client_result "cutadapt is not running...starting it now"
+			client_result "fastqc is not running...starting it now"
             #export HOME=${HOME}/app-root/data
 	    #Ejecutar el programa en background
 	    #nohup cutadapt/bin/cutadapt -a AACCGGTT input.fastq > output.fastq &
