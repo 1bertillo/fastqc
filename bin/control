@@ -1,0 +1,53 @@
+#!/bin/bash
+
+version=cutadapt
+
+function status() {
+
+  	client_result $pwd
+    ps -C cutadapt > /dev/null
+    if [ "$?" -eq "0" ];
+    then
+    client_result "cutadapt is running";
+    else
+    client_result "cutadapt is not running";
+    fi
+
+
+}
+
+function start() {
+
+     client_result "starting cutadapt...."
+        ps -C cutadapt > /dev/null
+        if [ "$?" -eq "0" ]; then
+                client_result "cutadapt is running already...run stop first";
+        else
+#			getinternalip
+			client_result "cutadapt is not running...starting it now"
+            #export HOME=${HOME}/app-root/data
+	    #Ejecutar el programa en background
+	    #nohup cutadapt/bin/cutadapt -a AACCGGTT input.fastq > output.fastq &
+        fi
+
+}
+
+#
+#  main():
+#
+
+# Ensure arguments.
+if ! [ $# -gt 0 ]; then
+    echo "Usage: $0 [start|status]"
+    exit 1
+fi
+
+# Source utility functions.
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+# Handle commands.
+case "$1" in
+    start)               start       ;;
+    status)              status      ;;
+    *)
+esac
