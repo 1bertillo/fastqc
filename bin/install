@@ -1,17 +1,13 @@
 #!/bin/bash
 
-#Unpack .tar.gz
-
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 client_result "installing fastqc....`date`"
-#Instalamos JRE
+#Installing JRE
 tar -xvzf versions/jre-*
 mv jre* jre
-#Descomprimimos fastqc y le damos permisos de ejecucion
+#Unzipping fasqc and setting exeuction permissions
 unzip versions/fastqc/fastqc*
 mv FastQC fastqc
 chmod +x fastqc/fastqc
-#A la hora de ejecutar habrá que indicar el path a java
-#P.e: ./fastqc/fastqc -o output.put -j jre/bin/java input.fq
 client_result "install complete....`date`"
-#echo "hola" > /dev/null
+
